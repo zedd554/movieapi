@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+       
+     
+</head>
+<body><header>
+    <h1>Get quotes from your favourite shows 🔥</h1></header>
+    <div class="parent">
+        <form method="post">
+            <button name="brba" formaction="/brba">
+                Breaking Bad
+            </button>
+            <button name="got" class="got" formaction="/g.o.t">
+                Game Of Thrones
+            </button>
+            <button name="bcs" class="bcs" formaction="/bcs">
+                Better Call Saul
+            </button>
+            <button name="luc" class="luc" formaction="lucifer">
+                Lucifer
+            </button>
+            <button name="random" class="random" formaction="random">
+                Random
+            </button>
+        </form>
+       <div class="child"> <%if(locals.quote){%>
+            <h2><%=quote%></h2><%}
+            else{%>
+                <h2>Waiting for input</h2>
+           <% }%>
+           <div class="by"><%if(locals.author){%>
+            <h2>~ <%=author%></h2><%}
+            else{%>
+                <h2>Waiting for input</h2>
+           <% }%></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@ericnavar/saul-goodman-quotes@1.2.0-BCS/index.min.js"></script>
+</body>
+</html>
