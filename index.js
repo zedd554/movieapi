@@ -21,6 +21,61 @@ const quotes = [
     'He Said He\'ll Break My Legs, And Don’t Tell Me He Didn’t Mean It... He Gave Me The Dead Mackerel Eyes.',
     'You pulled that heartstrings con job on me?! You piece of shit! ‘Oh, my brain used to work, I’m sick, I don’t know what to do!’ Asshole! No wonder Rebecca left you! What took her so long?!',
 ];
+var quoteArray = [{
+  quote: "Frankly, my dear, I don't give a damn.",
+  film: "Gone With the Wind"
+}, {
+  quote: "I'm going to make him an offer he can't refuse.",
+  film: "The Godfather"
+}, {
+  quote: "May the Force be with you.",
+  film: "Star Wars"
+}, {
+  quote: "You talking to me?",
+  film: "Taxi Driver"
+}, {
+  quote: "You're gonna need a bigger boat.",
+  film: "Jaws"
+}, {
+  quote: "There's no place like home",
+  film: "The Wizard of Oz"
+}, {
+  quote: "Show me the money!",
+  film: "Jerry Maguire"
+}, {
+  quote: "I'm walking here! I'm walking here!",
+  film: "Midnight Cowboy"
+}, {
+  quote: "Houston, we have a problem.",
+  film: "Apollo 13"
+}, {
+  quote: "Well, nobody's perfect.",
+  film: "Some Like It Hot"
+}, {
+  quote: "Say “hello” to my little friend!",
+  film: "Scarface"
+}, {
+  quote: "Bond. James Bond.",
+  film: "Dr. No"
+}, {
+  quote: "You can't handle the truth!",
+  film: "	A Few Good Men"
+}, {
+  quote: "I'll have what she's having.",
+  film: "When Harry Met Sally"
+}, {
+  quote: "I see dead people.",
+  film: "The Sixth Sense"
+}, {
+  quote: "Keep your friends close, but your enemies closer.",
+  film: "The Godfather II"
+}, {
+  quote: "Here's Johnny!",
+  film: "The Shining"
+}, {
+  quote: "Hasta la vista, baby.",
+  film: "Terminator 2: Judgment Day"
+}];
 
 
 
@@ -54,6 +109,20 @@ app.get('/', async(req,res)=>{
         var getQuote=quotes[randomnum];
         const response = getQuote;
         res.render("index.ejs", { quote: response,author:"Saul Goodman" });
+      
+      } catch (error) {
+        console.error("Failed to make request:", error.message);
+        res.render("index.ejs", {
+          error: error.message,
+        });
+      }
+   })
+   app.post('/random',async(req,res)=>{
+    try {var randomnum=Math.floor(Math.random()*quotes.length);
+        var getQuote=quoteArray[randomnum];
+        const response = JSON.stringify(getQuote.quote);
+        const film=getQuote.film;
+        res.render("index.ejs", { quote: response,author:film });
       
       } catch (error) {
         console.error("Failed to make request:", error.message);
