@@ -113,7 +113,7 @@ button {   margin-top: 2rem;
   h2{
     font-family: 'Articulate', sans-serif;
   }
-  @media(max-width:700px){
+  @media(max-width:900px){
     .luc{
       margin-left:6.5rem;
     }
